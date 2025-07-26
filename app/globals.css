@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+/* Hide Next.js badge and error messages */
+body > nextjs-portal {
+  display: none;
+}
+
+@layer base {
+  :root {
+    /* Pure Black Theme for Brain Focus */
+    --background: 0 0% 0%;
+    --foreground: 210 20% 95%;
+    --card: 0 0% 3%;
+    --card-foreground: 210 20% 95%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 45 100% 85%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 210 20% 95%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 45 100% 70%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 20% 95%;
+    --border: 0 0% 15%;
+    --input: 0 0% 10%;
+    --ring: 45 100% 70%;
+    --radius: 0.5rem;
+    
+    /* Brain-specific Colors */
+    --brain-cyan: 180 100% 50%;
+    --gold: 45 100% 70%;
+    --dark-gold: 42 88% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    background: #000000;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Custom scrollbar - More subtle */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--gold) / 0.3);
+    border-radius: 2px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold) / 0.5);
+  }
+}
+
+@layer components {
+  /* Elegant fade animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Brain-specific glows */
+  .glow-cyan {
+    box-shadow: 0 0 20px hsl(var(--brain-cyan) / 0.3);
+  }
+  
+  .glow-gold {
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.1);
+  }
+  
+  .glow-gold:hover {
+    box-shadow: 0 0 30px hsl(var(--gold) / 0.2);
+  }
+  
+  /* Professional button styles */
+  .btn-primary {
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--dark-gold)) 100%);
+    color: #000000;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px hsl(var(--gold) / 0.3);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: hsl(var(--foreground));
+    border: 2px solid hsl(var(--border));
+    padding: 12px 26px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .btn-secondary:hover {
+    border-color: hsl(var(--gold));
+    background: hsl(var(--gold) / 0.1);
+  }
+  
+  /* Professional card styles */
+  .card-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+  
+  .card-glass:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: hsl(var(--gold) / 0.3);
+  }
+  
+  /* Text gradients for emphasis */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--dark-gold)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Navigation styles */
+  .nav-glass {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Logo styles */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo-signature {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .logo-tagline {
+    font-size: 10px;
+    color: hsl(var(--muted-foreground));
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* 3D Brain specific styles */
+  .brain-canvas {
+    background: transparent !important;
+  }
+
+  /* Particle system styles */
+  .particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: hsl(var(--brain-cyan) / 0.6);
+    border-radius: 50%;
+    animation: particleFloat 10s linear infinite;
+  }
+
+  @keyframes particleFloat {
+    0% {
+      transform: translateY(100vh) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) translateX(100px);
+      opacity: 0;
+    }
+  }
+
+  /* Fear page specific particles */
+  .particle-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: -2s;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  }
+
+  .particle-2 {
+    top: 60%;
+    left: 80%;
+    animation-delay: -4s;
+    background: rgba(34, 211, 238, 0.5);
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.7);
+  }
+
+  .particle-3 {
+    top: 40%;
+    left: 20%;
+    animation-delay: -1s;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  }
+
+  .particle-4 {
+    top: 80%;
+    left: 60%;
+    animation-delay: -6s;
+    background: rgba(34, 211, 238, 0.4);
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+  }
+
+  .particle-5 {
+    top: 30%;
+    left: 70%;
+    animation-delay: -3s;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  }
+
+  @keyframes fearParticle {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translateY(-20px) translateX(10px) scale(1.2);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-10px) translateX(-15px) scale(0.8);
+      opacity: 1;
+    }
+    75% {
+      transform: translateY(-30px) translateX(5px) scale(1.1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0.3;
+    }
+  }
+
+  .particle-1, .particle-2, .particle-3, .particle-4, .particle-5 {
+    animation: fearParticle 8s ease-in-out infinite;
+  }
+}
