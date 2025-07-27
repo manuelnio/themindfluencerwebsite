@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Brain Visualization</title>
+  <style>
+    /* Basic reset */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      background: #000; /* Deep black background */
+      color: #fff;
+      font-family: sans-serif;
+    }
+
+    /* Container for the 3D scene */
+    #brainContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Overlay text for topics */
+    #topics {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      z-index: 1;
+    }
+    #topics span {
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    #topics span:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Three.js canvas will be injected into this container -->
+  <div id="brainContainer"></div>
+
+  <!-- Topic labels for user interaction -->
+  <div id="topics">
+    <span data-region="0">Fear</span>
+    <span data-region="1">Self‑Perception</span>
+    <span data-region="2">Habits</span>
+    <span data-region="3">Society</span>
+    <span data-region="4">Mindset</span>
+    <span data-region="5">Skillset</span>
+    <span data-region="6">Success</span>
+  </div>
+
+  <!-- Load Three.js from CDN. For production you might want to bundle locally. -->
+  <script src="https://unpkg.com/three@0.151.3/build/three.min.js"></script>
+  <!-- Custom brain visualization script -->
+  <script src="brain.js"></script>
+</body>
+</html>
